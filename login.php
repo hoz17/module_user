@@ -21,6 +21,7 @@ session_start();
                 <Label class="login-label">Mật Khẩu</Label>
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 <input type="submit" id="login-btn" name="login" value="Đăng Nhập">
+                <a href="register.php" id="register-btn" name="register">Đăng Ký</a>
             </form>
         </div>
     </div>

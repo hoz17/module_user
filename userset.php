@@ -15,6 +15,8 @@ session_start();
 
 </body>
 <a href="update.php?ID=<?php echo  $_SESSION["online"]; ?>">Sửa</a>
-<a href="confirmDelete.php?ID=<?php echo  $_SESSION["online"]; ?>">Xóa</a>
+<p></p>
+<a href="logout.php?ID=<?php echo  $_SESSION["online"]; ?>" onclick="return confirm('Are you sure you want to logout?')">Đăng Xuất</a>
+<a href="delete.php?ID=<?php echo  $_SESSION["online"]; ?>" onclick="return confirm('Are you sure you want to delete?')">Xóa</a>
 
 </html>

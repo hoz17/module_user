@@ -38,8 +38,26 @@ session_start();
         <p class="minititle">Giới Tính</p>
         <input class="radio" type="radio" name="Gender" value="0" <?php if ($rows["Gender"] == 0) echo "checked"; ?> /> Nam <br /><br />
         <input class="radio" type="radio" name="Gender" value="1" <?php if ($rows["Gender"] == 1) echo "checked"; ?> /> Nữ<br /><br />
-        <p class="minititle">Địa Chỉ</p><input type="text" name="Adress" value="<?php echo $rows['Adress']; ?>" required /><br /><br />
-        <br /><br />
+        <p class="minititle">Địa Chỉ</p>
+        <input type="text" name="Adress" value="<?php echo $rows['Adress']; ?>" required /><br /><br />
+        <p class="minititle">Nhóm</p>
+        <select name="cboClass" id="cboClass">
+            <?php
+            $conn = mysqli_connect("localhost", "root", "", "module_user");
+            if (!$conn) {
+                echo "Ket noi khong thanh cong";
+                exit();
+            } else {
+                $sql2 = "select * from class";
+                $result2 = mysqli_query($conn, $sql2);
+                if (mysqli_num_rows($result2) > 0) {
+                    while ($row = mysqli_fetch_assoc($result2)) {
+                        echo "<option value = '" . $row["ID"] . "'>" . $row["Class_name"] . "</option>";
+                    }
+                }
+            }
+            ?>
+        </select><br /><br />
         <input class="button" type="submit" name="update" value="Sửa">
         <button class="button"><a class="green" href="userset.php">Quay Lại</a></button>
     </form>
