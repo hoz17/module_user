@@ -29,7 +29,7 @@ $mail->Port = 587;
 $mail->setFrom('sn9920021@gmail.com', 'Managing Software');
 $mail->addReplyTo('sn9920021@gmail.com', 'Managing Software');
 
-$mail->addAddress($row["Email"]);
+$mail->addAddress($row['Email'],'');
 
 $mail->isHTML(true);
 
