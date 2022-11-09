@@ -28,7 +28,7 @@ session_start();
     }
     ?>
     <?php
-    $sql = "SELECT * FROM user WHERE ID = " . $_SESSION["online"];
+    $sql = "SELECT * FROM user WHERE ID = '$ID'";
     $result = mysqli_query($conn, $sql);
     $rows = mysqli_fetch_assoc($result);
     ?>

@@ -1,6 +1,6 @@
 <?php
-session_start();
-$ID = $_SESSION["online"];
+if (isset($_GET["ID"]))
+    $ID = $_GET["ID"];
 require 'connect.php';
 $sql = "SELECT Email FROM user WHERE ID ='$ID'";
 $result = mysqli_query($conn, $sql);
@@ -28,7 +28,7 @@ $mail->Port = 587;
 $mail->setFrom('sn9920021@gmail.com', 'Managing Software');
 $mail->addReplyTo('sn9920021@gmail.com', 'Managing Software');
 
-$mail->addAddress($row['Email'],'');
+$mail->addAddress($row['Email']);
 
 $mail->isHTML(true);
 
@@ -38,7 +38,7 @@ $bodyContent = '<table border="1"  align="center"><tbody>
 <tr>
 <td>
 <p align="center">Xác nhận kích tài khoản của bạn: </p>
-<p align="center" ><a  href="localhost/demo/module_user/active.php?ID=' . $ID . '"><input type="button" value="Bấm vào đây để kích hoạt tài khoản" ></a><p>
+<p align="center" ><a  href="active.php?ID=' . $ID . '"><input type="button" value="Bấm vào đây để kích hoạt tài khoản" ></a><p>
 </td>
 </tr>
 </tbody></table>';
@@ -46,23 +46,7 @@ $bodyContent .= '';
 $mail->Body    = $bodyContent;
 
 if (!$mail->send()) {
-    echo 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo;
+    echo '<div  align="center">Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '</div>';
 } else {
-    echo 'Message has been sent.';
+    echo '<div align="center">Thư xác nhận đã được gửi đến địa chỉ mail của bạn.<br>Vui lòng bấm vào liên kết để kích hoạt tài khoản.</div>';
 }
-?>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="delete.php"></a>
-    <input type="button" value="Bấm vào đây để xóa" link="localhost/demo/project1/index.php">
-</body>
-</html>
- -->

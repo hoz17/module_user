@@ -7,7 +7,7 @@ require "connect.php"
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Nhập</title>
+    <title>Trang chủ</title>
 </head>
 
 <body>

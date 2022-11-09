@@ -34,13 +34,21 @@ session_start();
         $row = mysqli_fetch_array($result);
         $count = mysqli_num_rows($result);
         if ($count == 1) {
-            echo "Đăng nhập thành công";
-            $_SESSION["online"] = $row['ID'];
-            header("location:userset.php");
+            if ($row['Status'] == 0) {
+                echo "Vui lòng kích hoạt tài khoản của bạn.";
+            } elseif ($row['Status'] == 2) {
+                echo "Tài khoản của bạn hiện đang bị khóa.<br>Vui lòng liên hệ admin để biết thêm chi tiết.";
+            } else {
+                echo "Đăng nhập thành công";
+                $_SESSION["online"] = $row['ID'];
+                if ($row['Status'] == 1)
+                    header("location:userset.php");
+                else header("location:adminset.php");
+            }
             // header("location:index.php");
             // setcookie("success", "Đăng nhập thành công!", time() + 1, "/", "", 0);
         } else {
-            echo "Đăng nhập không thành công";
+            echo "Tài khoản hoặc mật khẩu không đúng !";
             // header("location:index.php");
             // setcookie("error", "Đăng nhập không thành công!", time() + 1, "/", "", 0);
         }

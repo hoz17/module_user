@@ -13,7 +13,7 @@ session_start();
 
 <body>
     <div id="login">
-        <h1>Đăng Nhập</h1>
+        <h1>Đăng Ký</h1>
         <div id="login-body">
             <form action="" method="POST">
                 <Label class="login-label">Tên Tài Khoản <br></Label>
@@ -35,21 +35,25 @@ session_start();
         $pass1 = $_POST["password1"];
         $pass2 = $_POST["password2"];
 
-        $sql = "SELECT * FROM user WHERE Username = '$Username' ";
+        $sql = "SELECT * FROM user WHERE Username = '$Username' OR Email='$Email' ";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
         $count = mysqli_num_rows($result);
         if ($count != 0) {
-            echo "Tên tài khoản đã tồn tại";
+            echo "Tên tài khoản hoặc email đã được đăng ký";
         } else {
-            //kiểm tra xem 2 mật khẩu có giống nhau hay không:
             if ($pass1 != $pass2) {
                 echo "Đăng ký không thành công, xác nhận mật khẩu không đúng";
             } else {
                 $pass = $pass1;
-                $sql2 = "INSERT INTO user VALUES ('','$Username','$pass','$Email','','','','','','')";
+                $sql2 = "INSERT INTO user VALUES ('','$Username','$pass','$Email','','','','','',3,'')";
                 $result2 = mysqli_query($conn, $sql2);
-                header("location:login.php");
+
+                $sql3 = "SELECT ID FROM user WHERE Email='$Email' ";
+                $result3 = mysqli_query($conn, $sql3);
+                $row3 = mysqli_fetch_array($result3);
+                $ID=$row3['ID'];
+                header('location:confirmActive.php?ID='.$ID);
             }
         }
     }

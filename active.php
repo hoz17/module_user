@@ -6,6 +6,8 @@ if (isset($_GET["ID"])) {
     $result = mysqli_query($conn, $sql);
     if ($result) {
         echo "<div align='center'><h1>Kích hoạt thành công</h1></div>";
+        echo "<div align='center'><a href='login.php'><input type='button' value='Đăng nhập'></a></div>";
+        echo "<div align='center'><a href='update.php?ID=".$ID."'><input type='button'value='Sửa thông tin'></a></div>";
     } else {
         echo "<div align='center'><h1>Kích hoạt không thành công</h1></div>";
     }

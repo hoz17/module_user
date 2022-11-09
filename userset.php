@@ -17,6 +17,6 @@ session_start();
 <a href="update.php?ID=<?php echo  $_SESSION["online"]; ?>">Sửa</a>
 <p></p>
 <a href="logout.php?ID=<?php echo  $_SESSION["online"]; ?>" onclick="return confirm('Are you sure you want to logout?')">Đăng Xuất</a>
-<a href="delete.php?ID=<?php echo  $_SESSION["online"]; ?>" onclick="return confirm('Are you sure you want to delete?')">Xóa</a>
+<a href="confirmDelete.php?ID=<?php echo  $_SESSION["online"]; ?>" onclick="return confirm('Email xác nhận đã được gửi đến địa chỉ của bạn')">Xóa</a>
 
 </html>
