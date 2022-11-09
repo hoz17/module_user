@@ -1,7 +1,6 @@
 <?php
 session_start();
 $ID = $_SESSION["online"];
-
 require 'connect.php';
 $sql = "SELECT Email FROM user WHERE ID ='$ID'";
 $result = mysqli_query($conn, $sql);
@@ -39,7 +38,7 @@ $bodyContent = '<table border="1"  align="center"><tbody>
 <tr>
 <td>
 <p align="center">Xác nhận kích tài khoản của bạn: </p>
-<p align="center" ><a  href="localhost/demo/project/active.php?ID=' . $ID . '"><input type="button" value="Bấm vào đây để kích hoạt tài khoản" ></a><p>
+<p align="center" ><a  href="localhost/demo/module_user/active.php?ID=' . $ID . '"><input type="button" value="Bấm vào đây để kích hoạt tài khoản" ></a><p>
 </td>
 </tr>
 </tbody></table>';
