@@ -1,9 +1,10 @@
 <?php
 session_start();
 $ID = $_SESSION["online"];
-/* if (isset($_GET["ID"])) {
-	$ID = $_GET["ID"];
-} */
+require 'connect.php';
+$sql = "SELECT Email FROM user WHERE ID ='$ID'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result);
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -27,7 +28,7 @@ $mail->Port = 587;
 $mail->setFrom('sn9920021@gmail.com', 'Managing Software');
 $mail->addReplyTo('sn9920021@gmail.com', 'Managing Software');
 
-$mail->addAddress('sn992002@gmail.com');
+$mail->addAddress($row['Email'],'');
 
 $mail->isHTML(true);
 
@@ -37,7 +38,7 @@ $bodyContent = '<table border="1"  align="center"><tbody>
 <tr>
 <td>
 <p align="center">Xác nhận xóa tài khoản của bạn: </p>
-<p align="center" ><a  href="localhost/demo/project/delete.php?ID=' . $ID . '"><input type="button" value="Bấm vào đây để xóa" ></a><p>
+<p align="center" ><a  href="localhost/demo/module_user/delete.php?ID=' . $ID . '"><input type="button" value="Bấm vào đây để xóa" ></a><p>
 </td>
 </tr>
 </tbody></table>';
