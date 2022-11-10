@@ -38,7 +38,7 @@ $bodyContent = '<table border="1"  align="center"><tbody>
 <tr>
 <td>
 <p align="center">Xác nhận kích tài khoản của bạn: </p>
-<p align="center" ><a  href="active.php?ID=' . $ID . '"><input type="button" value="Bấm vào đây để kích hoạt tài khoản" ></a><p>
+<p align="center" ><a  href="localhost/demo/module_user/active.php?ID=' . $ID . '"><input type="button" value="Bấm vào đây để kích hoạt tài khoản" ></a><p>
 </td>
 </tr>
 </tbody></table>';

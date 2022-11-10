@@ -46,7 +46,7 @@ session_start();
                 echo "Đăng ký không thành công, xác nhận mật khẩu không đúng";
             } else {
                 $pass = $pass1;
-                $sql2 = "INSERT INTO user VALUES ('','$Username','$pass','$Email','','','','','',3)";
+                $sql2 = "INSERT INTO user VALUES ('','$Username','$pass','$Email','','','','','',1)";
                 $result2 = mysqli_query($conn, $sql2);
 
                 $sql3 = "SELECT ID FROM user WHERE Email='$Email' ";

@@ -39,7 +39,7 @@ session_start();
         <input class="radio" type="radio" name="Gender" value="0" <?php if ($rows["Gender"] == 0) echo "checked"; ?> /> Nam <br /><br />
         <input class="radio" type="radio" name="Gender" value="1" <?php if ($rows["Gender"] == 1) echo "checked"; ?> /> Nữ<br /><br />
         <p class="minititle">Địa Chỉ</p>
-        <input type="text" name="Adress" value="<?php echo $rows['Adress']; ?>" required /><br /><br />
+        <input type="text" name="Adress" value="<?php echo $rows['Address']; ?>" required /><br /><br />
         <p class="minititle">Nhóm</p>
         <select name="cboClass" id="cboClass">
             <?php
