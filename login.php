@@ -22,10 +22,8 @@ if (isset($_POST['submit'])) {
         header("location:userset.php");
       else header("location:adminset.php");
     }
-
   } else {
     echo "Tài khoản hoặc mật khẩu không đúng !";
-
   }
 }
 ?>
@@ -39,7 +37,6 @@ if (isset($_POST['submit'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./CSS/login.css">
-  <script src="./JS/login.js"></script>
 </head>
 
 <body>
