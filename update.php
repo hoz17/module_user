@@ -1,6 +1,7 @@
 <?php
 require "connect.php";
 session_start();
+$IDSession = $_SESSION["online"];
 ?>
 <div class="div_center">
     <h1>Sửa Dữ Liệu</h1>
@@ -15,13 +16,17 @@ session_start();
         $Fullname = $_POST["Fullname"];
         $Birthday = $_POST["Birthday"];
         $Gender = $_POST["Gender"];
-        $Adress = $_POST["Adress"];
+        $Address = $_POST["Address"];
 
-        $sql = "UPDATE user SET Fullname='$Fullname',Birthday='$Birthday',Gender = '$Gender', Adress='$Adress' WHERE id=" . $_SESSION["online"];
+        $sql = "UPDATE user SET Fullname='$Fullname',Birthday='$Birthday',Gender = '$Gender', Address='$Address' WHERE id=" . $_SESSION["online"];
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            echo "Sửa thành công";
-            header("location: userset.php");
+            echo "<script type='text/javascript'>alert('Sửa thành công!')</script>";
+            $sql4 = "SELECT Status FROM user WHERE ID = '$IDSession'";
+            $result4 = mysqli_query($conn, $sql4);
+            $row4 = mysqli_fetch_assoc($result4);
+            if ($row4['Status'] == 3) header("location:adminset.php");
+            elseif ($row4['Status'] == 1) header("location:userset.php");
         } else {
             echo "Failed";
         }
@@ -39,7 +44,7 @@ session_start();
         <input class="radio" type="radio" name="Gender" value="0" <?php if ($rows["Gender"] == 0) echo "checked"; ?> /> Nam <br /><br />
         <input class="radio" type="radio" name="Gender" value="1" <?php if ($rows["Gender"] == 1) echo "checked"; ?> /> Nữ<br /><br />
         <p class="minititle">Địa Chỉ</p>
-        <input type="text" name="Adress" value="<?php echo $rows['Address']; ?>" required /><br /><br />
+        <input type="text" name="Address" value="<?php echo $rows['Address']; ?>" required /><br /><br />
         <p class="minititle">Nhóm</p>
         <select name="cboClass" id="cboClass">
             <?php
@@ -59,6 +64,13 @@ session_start();
             ?>
         </select><br /><br />
         <input class="button" type="submit" name="update" value="Sửa">
-        <button class="button"><a class="green" href="userset.php">Quay Lại</a></button>
+        <button class="button"><a class="green" href="
+        <?php
+        $sql4 = "SELECT Status FROM user WHERE ID = '$IDSession'";
+        $result4 = mysqli_query($conn, $sql4);
+        $row4 = mysqli_fetch_assoc($result4);
+        if ($row4['Status'] == 3) echo "adminset.php";
+        elseif ($row4['Status'] == 1) echo "userset.php";
+        ?>">Quay Lại</a></button>
     </form>
 </div>
