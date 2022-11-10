@@ -32,7 +32,8 @@ session_start();
             }
             ?>
         </select>
-        <input type="submit" value="Tìm kiếm" name="search"><br>
+        <input type="submit" value="Tìm kiếm" name="search">
+        <a href="logout.php?ID=<?php echo  $_SESSION["online"]; ?>" onclick="return confirm('Are you sure you want to logout?')">Đăng Xuất</a><br>
     </form>
     <?php
     if (isset($_POST["search"])) {
@@ -95,7 +96,7 @@ session_start();
                                     ?></td>
                                 <td><?php echo $row["Fullname"]; ?></td>
                                 <td><?php echo $row["Birthday"]; ?></td>
-                                <td><?php echo $row["Gender"]; ?></td>
+                                <td><?php if($row["Gender"]==0)echo"Nam";else echo"Nữ"; ?></td>
                                 <td><?php echo $row["Address"]; ?></td>
                                 <td><?php echo $row["Class_name"]; ?></td>
                                 <td><a href="update.php?ID=<?php echo $row['ID']; ?>">Sửa</a> |<a href="delete.php?ID=<?php echo $row['ID']; ?>" onclick="return confirm('Are you sure you want to delete?')"> Xóa </a> </td>

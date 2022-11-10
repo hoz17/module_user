@@ -53,7 +53,7 @@ $IDSession = $_SESSION["online"];
                 }
             }
         </script>
-        <p class="minititle">Username</p><input type="text" name="Username" value="<?php echo $rows['Username']; ?>" required /><br /><br />
+        <p class="minititle">Username</p><input type="text" name="Username" value="<?php echo $rows['Username']; ?>" <?php if ($rows['Status'] != 3) echo 'readonly'; ?> /><br /><br />
         <p class="minititle">Password</p><input type="password" id="myInput" name="Password" value="<?php echo $rows['Password']; ?>" required /><input type="checkbox" onclick="showPwd()" name="" id="">Hiện mật khẩu<br /><br />
         <p class="minititle">Email</p><input type="text" name="Email" value="<?php echo $rows['Email']; ?>" required /><br /><br />
         <p class="minititle">Trạng thái</p>

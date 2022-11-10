@@ -14,6 +14,13 @@ session_start();
 <body align="center">
 
 </body>
+<div class="greeting">Xin chào
+    <?php
+    $sql = "SELECT Fullname FROM user WHERE ID=" . $_SESSION['online'];
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+    echo $row['Fullname'];
+    ?></div>
 <a href="update.php?ID=<?php echo  $_SESSION["online"]; ?>">Sửa</a>
 <p></p>
 <a href="logout.php?ID=<?php echo  $_SESSION["online"]; ?>" onclick="return confirm('Are you sure you want to logout?')">Đăng Xuất</a>
