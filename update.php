@@ -26,12 +26,16 @@ $IDSession = $_SESSION["online"];
         $sql = "UPDATE user SET Fullname='$Fullname',Birthday='$Birthday',Gender = '$Gender', Address='$Address', Class_id='$Class' , Username='$Username', Password='$Password', Status='$Status'WHERE id=" . $ID;
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            echo "<script type='text/javascript'>alert('Sửa thành công!')</script>";
             $sql4 = "SELECT Status FROM user WHERE ID = '$IDSession'";
             $result4 = mysqli_query($conn, $sql4);
             $row4 = mysqli_fetch_assoc($result4);
-            if ($row4['Status'] == 3) header("location:adminset.php");
-            elseif ($row4['Status'] == 1) header("location:userset.php");
+            if ($row4['Status'] == 3) {
+                header("location:adminset.php");
+                echo "<script type='text/javascript'>alert('Sửa thành công!')</script>";
+            } elseif ($row4['Status'] == 1) {
+                header("location:userset.php");
+                echo "<script type='text/javascript'>alert('Sửa thành công!')</script>";
+            }
         } else {
             echo "Failed";
         }
