@@ -96,7 +96,8 @@ session_start();
                                     ?></td>
                                 <td><?php echo $row["Fullname"]; ?></td>
                                 <td><?php echo $row["Birthday"]; ?></td>
-                                <td><?php if($row["Gender"]==0)echo"Nam";else echo"Nữ"; ?></td>
+                                <td><?php if ($row["Gender"] == 0) echo "Nam";
+                                    else echo "Nữ"; ?></td>
                                 <td><?php echo $row["Address"]; ?></td>
                                 <td><?php echo $row["Class_name"]; ?></td>
                                 <td><a href="update.php?ID=<?php echo $row['ID']; ?>">Sửa</a> |<a href="delete.php?ID=<?php echo $row['ID']; ?>" onclick="return confirm('Are you sure you want to delete?')"> Xóa </a> </td>
