@@ -44,143 +44,72 @@ if ($row['Status'] == 1)
     if (isset($_POST["search"])) {
         $s = $_POST["searchbar"];
         $Class = $_POST["cboClass"];
-        if ($s == "") {
-            if ($Class == 1) {
-                echo "Không được để trống";
-                echo "<a href='adminset.php';>Home</a>";
-            } else {
-                $sql = "SELECT user.ID,user.Username,user.Password, user.Email, user.Status, user.Fullname, user.Birthday, user.Gender, User.Address, class.Class_name FROM user,class WHERE user.Class_id=class.ID AND  Class_id='$Class' ORDER BY user.ID";
-                $result = mysqli_query($conn, $sql);
-                $count = mysqli_num_rows($result);
-                if ($count <= 0) {
-                    echo "Khong tim thay ket qua phu hop";
-                    echo "<a href='index.php';>Home</a>";
-                } else {
-                    echo "Tim thay " . $count . " ket qua  ";
+        if($s=='')$sql="SELECT user.ID,user.Username,user.Password, user.Email, user.Status, user.Fullname, user.Birthday, user.Gender, User.Address, class.Class_name FROM user,class WHERE user.Class_id=class.ID AND  Class_id='$Class' ORDER BY user.ID";
+        else $sql = "SELECT user.ID,user.Username,user.Password, user.Email, user.Status, user.Fullname, user.Birthday, user.Gender, User.Address, class.Class_name FROM user,class WHERE user.Class_id=class.ID AND (Username LIKE '%$s%' OR Email LIKE '%$s%') ORDER BY user.ID";
+        $result = mysqli_query($conn, $sql);
+        $count = mysqli_num_rows($result);
+        if ($count <= 0) {
+            echo "Khong tim thay ket qua phu hop";
+            echo "<a href='index.php';>Home</a>";
+        } else {
+            echo "Tim thay " . $count . " ket qua  ";
     ?>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th></th>
-                                <th>ID</td>
-                                <th>Username</td>
-                                <th>Password</td>
-                                <th>Email</td>
-                                <th>Status</td>
-                                <th>Fullname</td>
-                                <th>Birthday</td>
-                                <th>Gender</td>
-                                <th>Address</td>
-                                <th>Class</td>
-                                <th><a href="addAccount.php">Thêm</a></th>
-                            </tr>
-                            <?php
-                            while ($row = mysqli_fetch_array($result)) {
-                            ?>
-                                <tr>
-                                    <td> <input type="checkbox" name="checkbox" id="" value="<?php echo $row['ID']; ?>"></td>
-                                    <td><?php echo $row["ID"]; ?></td>
-                                    <td><?php echo $row["Username"]; ?></td>
-                                    <td><?php echo $row["Password"]; ?></td>
-                                    <td><?php echo $row["Email"]; ?></td>
-                                    <td><?php switch ($row["Status"]) {
-                                            case 0:
-                                                echo "Chưa kích hoạt";
-                                                break;
-                                            case 1:
-                                                echo "User";
-                                                break;
-                                            case 2:
-                                                echo "Blocked";
-                                                break;
-                                            case 3:
-                                                echo "Admin";
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                        ?></td>
-                                    <td><?php echo $row["Fullname"]; ?></td>
-                                    <td><?php echo $row["Birthday"]; ?></td>
-                                    <td><?php if ($row["Gender"] == 0) echo "Nam";
-                                        else echo "Nữ"; ?></td>
-                                    <td><?php echo $row["Address"]; ?></td>
-                                    <td><?php echo $row["Class_name"]; ?></td>
-                                    <td><a href="update.php?ID=<?php echo $row['ID']; ?>">Sửa</a> |<a id="btxoa" href="delete.php?ID=<?php echo $row['ID']; ?>" onclick="return confirm('Are you sure you want to delete?')"> Xóa </a> </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                    <?php echo "<a href='adminset.php';>Home</a>";
-                        }
-                    }
-                } else {
-                    $sql = "SELECT user.ID,user.Username,user.Password, user.Email, user.Status, user.Fullname, user.Birthday, user.Gender, User.Address, class.Class_name FROM user,class WHERE user.Class_id=class.ID AND (Username LIKE '%$s%' OR Email LIKE '%$s%') ORDER BY user.ID";
-                    $result = mysqli_query($conn, $sql);
-                    $count = mysqli_num_rows($result);
-                    if ($count <= 0) {
-                        echo "Khong tim thay ket qua phu hop";
-                        echo "<a href='index.php';>Home</a>";
-                    } else {
-                        echo "Tim thay " . $count . " ket qua voi tu khoa";
-                            ?>
-                <table>
-                    <tbody>
+            <table>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th>ID</td>
+                        <th>Username</td>
+                        <th>Password</td>
+                        <th>Email</td>
+                        <th>Status</td>
+                        <th>Fullname</td>
+                        <th>Birthday</td>
+                        <th>Gender</td>
+                        <th>Address</td>
+                        <th>Class</td>
+                        <th><a href="addAccount.php">Thêm</a></th>
+                    </tr>
+                    <?php
+                    while ($row = mysqli_fetch_array($result)) {
+                    ?>
                         <tr>
-                            <th></th>
-                            <th>ID</td>
-                            <th>Username</td>
-                            <th>Password</td>
-                            <th>Email</td>
-                            <th>Status</td>
-                            <th>Fullname</td>
-                            <th>Birthday</td>
-                            <th>Gender</td>
-                            <th>Address</td>
-                            <th>Class</td>
-                            <th><a href="addAccount.php">Thêm</a></th>
+                            <td> <input type="checkbox" name="checkbox" id="" value="<?php echo $row['ID']; ?>"></td>
+                            <td><?php echo $row["ID"]; ?></td>
+                            <td><?php echo $row["Username"]; ?></td>
+                            <td><?php echo $row["Password"]; ?></td>
+                            <td><?php echo $row["Email"]; ?></td>
+                            <td><?php switch ($row["Status"]) {
+                                    case 0:
+                                        echo "Chưa kích hoạt";
+                                        break;
+                                    case 1:
+                                        echo "User";
+                                        break;
+                                    case 2:
+                                        echo "Blocked";
+                                        break;
+                                    case 3:
+                                        echo "Admin";
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                ?></td>
+                            <td><?php echo $row["Fullname"]; ?></td>
+                            <td><?php echo $row["Birthday"]; ?></td>
+                            <td><?php if ($row["Gender"] == 0) echo "Nam";
+                                else echo "Nữ"; ?></td>
+                            <td><?php echo $row["Address"]; ?></td>
+                            <td><?php echo $row["Class_name"]; ?></td>
+                            <td><a href="update.php?ID=<?php echo $row['ID']; ?>">Sửa</a> |<a id="btxoa" href="delete.php?ID=<?php echo $row['ID']; ?>" onclick="return confirm('Are you sure you want to delete?')"> Xóa </a> </td>
                         </tr>
-                        <?php
-                        while ($row = mysqli_fetch_array($result)) {
-                        ?>
-                            <tr>
-                                <td> <input type="checkbox" name="checkbox" id="" value="<?php echo $row['ID']; ?>"></td>
-                                <td><?php echo $row["ID"]; ?></td>
-                                <td><?php echo $row["Username"]; ?></td>
-                                <td><?php echo $row["Password"]; ?></td>
-                                <td><?php echo $row["Email"]; ?></td>
-                                <td><?php switch ($row["Status"]) {
-                                        case 0:
-                                            echo "Chưa kích hoạt";
-                                            break;
-                                        case 1:
-                                            echo "User";
-                                            break;
-                                        case 2:
-                                            echo "Blocked";
-                                            break;
-                                        case 3:
-                                            echo "Admin";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    ?></td>
-                                <td><?php echo $row["Fullname"]; ?></td>
-                                <td><?php echo $row["Birthday"]; ?></td>
-                                <td><?php if ($row["Gender"] == 0) echo "Nam";
-                                    else echo "Nữ"; ?></td>
-                                <td><?php echo $row["Address"]; ?></td>
-                                <td><?php echo $row["Class_name"]; ?></td>
-                                <td><a href="update.php?ID=<?php echo $row['ID']; ?>">Sửa</a> |<a id="btxoa" href="delete.php?ID=<?php echo $row['ID']; ?>" onclick="return confirm('Are you sure you want to delete?')"> Xóa </a> </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                    <?php } ?>
+                </tbody>
+            </table>
     <?php echo "<a href='adminset.php';>Home</a>";
-                    }
-                }
-            } else require "content.php"; ?>
+        }
+    } else require "content.php"; ?>
 </body>
 
 </html>
