@@ -60,13 +60,14 @@ $IDSession = $_SESSION["online"];
         <p class="minititle">Username</p><input type="text" name="Username" value="<?php echo $rows['Username']; ?>" <?php if ($rows['Status'] != 3) echo 'readonly'; ?> /><br /><br />
         <p class="minititle">Password</p><input type="password" id="myInput" name="Password" value="<?php echo $rows['Password']; ?>" required /><input type="checkbox" onclick="showPwd()" name="" id="">Hiện mật khẩu<br /><br />
         <p class="minititle">Email</p><input type="text" name="Email" value="<?php echo $rows['Email']; ?>" required /><br /><br />
-        <p class="minititle">Trạng thái</p>
-        <select name="cboStatus" id="cboStatus">
+        <p class="minititle" <?php if ($rows['Status'] == 1) echo 'hidden'; ?>>Trạng thái</p>
+        <select name="cboStatus" id="cboStatus" <?php if ($rows['Status'] == 1) echo 'hidden'; ?>>
             <option value="0" <?php if ($rows['Status'] == 0) echo "selected"; ?>>Chưa kích hoạt</option>
             <option value="1" <?php if ($rows['Status'] == 1) echo "selected"; ?>>User</option>
             <option value="2" <?php if ($rows['Status'] == 2) echo "selected"; ?>>Blocked</option>
             <option value="3" <?php if ($rows['Status'] == 3) echo "selected"; ?>>Admin</option>
-        </select><br /><br />
+        </select>
+        <?php if ($rows['Status'] != 1) echo '<br ><br >'; ?>
         <p class="minititle">Họ tên</p><input type="text" name="Fullname" value="<?php echo $rows['Fullname']; ?>" required /><br /><br />
         <p class="minititle">Ngày Sinh</p><input type="date" name="Birthday" value="<?php echo $rows['Birthday']; ?>" required /><br /><br />
         <p class="minititle">Giới Tính</p>
