@@ -86,8 +86,9 @@ $IDSession = $_SESSION["online"];
                 $result2 = mysqli_query($conn, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
                     while ($row = mysqli_fetch_assoc($result2)) {
-                        ?>
-                        <option value = <?php echo $row['ID']; ?> <?php if() ?>></option>";
+                        $select = "";
+                        if ($rows['Class_id'] == $row['ID']) $select = "selected";
+                        echo "<option " . $select . " value = '" . $row["ID"] . "' >" . $row['Class_name'] . "</option>";
                     }
                 }
             }
