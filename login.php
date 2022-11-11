@@ -4,15 +4,14 @@ session_start();
 $_SESSION['online'];
 ?>
 <?php
-if ($_SESSION['online']!=''){
-  $sql = "SELECT Status FROM user WHERE ID=".$_SESSION['online'] ;
+if ($_SESSION['online'] != '') {
+  $sql = "SELECT Status FROM user WHERE ID=" . $_SESSION['online'];
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result);
   if ($row['Status'] == 1)
-        header("location:userset.php");
-      else header("location:adminset.php");
-}
-elseif (isset($_POST['submit'])) {
+    header("location:userset.php");
+  else header("location:adminset.php");
+} elseif (isset($_POST['submit'])) {
   $tk = $_POST['username'];
   $mk = $_POST['password'];
   $sql = "SELECT * FROM user WHERE Username = '$tk' AND Password = '$mk' ";
@@ -23,7 +22,7 @@ elseif (isset($_POST['submit'])) {
     if ($row['Status'] == 0) {
       echo "Vui lòng kích hoạt tài khoản của bạn.";
     } elseif ($row['Status'] == 2) {
-      echo "Tài khoản của bạn hiện đang bị khóa.<br>Vui lòng liên hệ admin để biết thêm chi tiết.";
+      echo '<script>alert("Tài khoản của bạn hiện đang bị khóa.<br>Vui lòng liên hệ admin để biết thêm chi tiết")</script>';
     } else {
       echo "Đăng nhập thành công";
       $_SESSION["online"] = $row['ID'];
@@ -32,7 +31,7 @@ elseif (isset($_POST['submit'])) {
       else header("location:adminset.php");
     }
   } else {
-    echo "Tài khoản hoặc mật khẩu không đúng !";
+    echo '<script>alert("Tài khoản hoặc mật khẩu không đúng !")</script>';
   }
 }
 ?>
