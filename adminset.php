@@ -20,7 +20,7 @@ if ($row['Status'] == 1)
 <body>
     <form action="" method="POST">
         <input type="text" name="searchbar">
-        <select name="cboClass" id="cboClass">
+        <select name="cboClass" id="cboClass" >
             <?php
             $conn = mysqli_connect("localhost", "root", "", "module_user");
             if (!$conn) {
