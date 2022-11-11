@@ -39,7 +39,7 @@ $bodyContent = '<table border="1"  align="center"><tbody>
 <td>
 <p align="center">Xác nhận xóa tài khoản của bạn: </p>
 <p align="center">Xin chào </p>' . $row['Email'] . '
-<p align="center" ><a  href="delete.php?ID=' . $ID . '"><input type="button" value="Bấm vào đây để xóa" ></a><p>
+<p align="center" ><a  href="localhost/module_user/delete.php?ID=' . $ID . '"><input type="button" value="Bấm vào đây để xóa" ></a><p>
 </td>
 </tr>
 </tbody></table>';
