@@ -14,10 +14,10 @@ if (isset($_POST["register"])) {
     $row = mysqli_fetch_array($result);
     $count = mysqli_num_rows($result);
     if ($count != 0) {
-        echo "Tên tài khoản hoặc email đã được đăng ký";
+        echo '<script>alert("Tên tài khoản hoặc email đã được đăng ký")</script>';
     } else {
         if ($pass1 != $pass2) {
-            echo "Đăng ký không thành công, xác nhận mật khẩu không đúng";
+            echo '<script>alert("Đăng ký không thành công, xác nhận mật khẩu không đúng")</script>';
         } else {
             $pass = $pass1;
             $sql2 = "INSERT INTO user VALUES ('','$Username','$pass','$Email','','','','','',1)";
