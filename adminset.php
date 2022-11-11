@@ -30,6 +30,7 @@ if ($row['Status'] == 1)
                 $sql2 = "select * from class";
                 $result2 = mysqli_query($conn, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
+                    echo "<option value = ''> Tất cả </option>";
                     while ($row = mysqli_fetch_assoc($result2)) {
                         echo "<option value = '" . $row["ID"] . "'>" . $row["Class_name"] . "</option>";
                     }
@@ -44,7 +45,7 @@ if ($row['Status'] == 1)
     if (isset($_POST["search"])) {
         $s = $_POST["searchbar"];
         $Class = $_POST["cboClass"];
-        if($s=='')$sql="SELECT user.ID,user.Username,user.Password, user.Email, user.Status, user.Fullname, user.Birthday, user.Gender, User.Address, class.Class_name FROM user,class WHERE user.Class_id=class.ID AND  Class_id='$Class' ORDER BY user.ID";
+        if ($s == '') $sql = "SELECT user.ID,user.Username,user.Password, user.Email, user.Status, user.Fullname, user.Birthday, user.Gender, User.Address, class.Class_name FROM user,class WHERE user.Class_id=class.ID AND  Class_id='$Class' ORDER BY user.ID";
         else $sql = "SELECT user.ID,user.Username,user.Password, user.Email, user.Status, user.Fullname, user.Birthday, user.Gender, User.Address, class.Class_name FROM user,class WHERE user.Class_id=class.ID AND (Username LIKE '%$s%' OR Email LIKE '%$s%') ORDER BY user.ID";
         $result = mysqli_query($conn, $sql);
         $count = mysqli_num_rows($result);
