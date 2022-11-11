@@ -3,11 +3,11 @@ require "connect.php";
 session_start();
 ?>
 <?php
+$_SESSION['online'];
 if ($_SESSION['online']!=''){
   $sql = "SELECT Status FROM user WHERE ID=".$_SESSION['online'] ;
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result);
-  header("location:userset.php");
   if ($row['Status'] == 1)
         header("location:userset.php");
       else header("location:adminset.php");

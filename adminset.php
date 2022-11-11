@@ -1,6 +1,11 @@
 <?php
 require "connect.php";
 session_start();
+$sql = "SELECT Status FROM user WHERE ID=" . $_SESSION['online'];
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result);
+if ($row['Status'] == 1)
+    header("location:userset.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +71,7 @@ session_start();
                             <th>Gender</td>
                             <th>Address</td>
                             <th>Class</td>
-                            <th><a href="addAccount.php.php">Thêm</a></th>
+                            <th><a href="addAccount.php">Thêm</a></th>
                         </tr>
                         <?php
                         while ($row = mysqli_fetch_array($result)) {
