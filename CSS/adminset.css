@@ -1,4 +1,5 @@
 table {
+  max-width: 100%;
   border: solid black;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -59,7 +60,7 @@ h1 {
 .container {
   /* display: flex; */
   margin: 0 auto;
-  width: 80%;
+  width: 95%;
   padding-bottom: 10px;
 }
 @media (max-width: 900px) {

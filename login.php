@@ -20,7 +20,7 @@ if ($_SESSION['online'] != '') {
     if ($row['Status'] == 0) {
       echo "Vui lòng kích hoạt tài khoản của bạn.";
     } elseif ($row['Status'] == 2) {
-      echo '<script>alert("Tài khoản của bạn hiện đang bị khóa.<br>Vui lòng liên hệ admin để biết thêm chi tiết")</script>';
+      echo '<script>alert("Tài khoản của bạn hiện đang bị khóa. Vui lòng liên hệ admin để biết thêm chi tiết")</script>';
     } else {
       echo "Đăng nhập thành công";
       $_SESSION["online"] = $row['ID'];

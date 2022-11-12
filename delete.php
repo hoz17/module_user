@@ -21,7 +21,7 @@
     }
     ?>
     <br>
-    <div align="center"><a href="index.php"><input type="submit" value="Trang chủ" name="return"></a></div>
+    <div align="center"><a href="login.php"><input type="submit" value="Trang chủ" name="return"></a></div>
 </body>
 
 </html>

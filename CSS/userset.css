@@ -32,7 +32,7 @@ body {
 }
 .container {
   display: flex;
-  height: 320px;
+  height: 400px;
   margin: 0 auto;
   width: 640px;
 }
@@ -58,7 +58,7 @@ body {
     max-height: 270px;
   }
 }
-.login {
+.Welcome {
   font-size: 50px;
   font-weight: 900;
   margin: 50px 40px 40px;
@@ -86,20 +86,9 @@ body {
   }
 }
 
-.form {
-  margin: 40px;
-  position: absolute;
-}
-label {
-  color: #c2c2c5;
-  display: block;
-  font-size: 14px;
-  height: 16px;
-  margin-top: 20px;
-  margin-bottom: 5px;
-}
 input {
   background: transparent;
+  border: 0;
   color: #f2f2f2;
   font-size: 20px;
   height: 30px;
@@ -107,29 +96,23 @@ input {
   outline: none !important;
   width: 100%;
 }
-/* input::-moz-focus-inner {
+input::-moz-focus-inner {
   border: 0;
-} */
-#submit {
-  color: #707075;
+}
+.user-btn {
+  text-align: left;
+  color: #fff;
   margin-top: 40px;
   transition: color 300ms;
 }
-#submit:focus {
+.user-btn:hover {
+  background-color: #464852;
+  border: 1px solid #f1f1f2;
+  border-radius: 5%;
+}
+.user-btn:focus {
   color: #f2f2f2;
 }
-#submit:active {
-  color: #d0d0d2;
-}
-#register-btn {
-  font-size: 16px;
-  color: #707075;
-  margin-top: 10px;
-  transition: color 300ms;
-}
-#register-btn:focus {
-  color: #f2f2f2;
-}
-#register-btn:active {
+.user-btn:active {
   color: #d0d0d2;
 }

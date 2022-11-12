@@ -14,21 +14,34 @@ if ($row['Status'] == 3)
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cài đặt người dùng</title>
+    <link rel="stylesheet" href="./CSS/userset.css">
 </head>
 
-<body align="center">
+<body>
 
 </body>
-<div class="greeting">Xin chào
-    <?php
-    $sql = "SELECT Fullname FROM user WHERE ID=" . $_SESSION['online'];
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
-    echo $row['Fullname'];
-    ?></div>
-<a href="update.php?ID=<?php echo  $_SESSION["online"]; ?>">Sửa</a>
-<p></p>
-<a href="logout.php?ID=<?php echo  $_SESSION["online"]; ?>" onclick="return confirm('Are you sure you want to logout?')">Đăng Xuất</a>
-<a href="confirmDelete.php?ID=<?php echo  $_SESSION["online"]; ?>" onclick="return confirm('Email xác nhận đã được gửi đến địa chỉ của bạn')">Xóa</a>
+<div class="page">
+    <div class="container">
+        <div class="left">
+            <div class="Welcome">
+                Welcome,
+                <?php
+                $sql = "SELECT Username FROM user WHERE ID=" . $_SESSION['online'];
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_array($result);
+                echo $row['Username'];
+                ?>
+            </div>
+            <div class="eula">User Function Here !!!</div>
+        </div>
+        <div class="right">
+            <input type="button" onclick="location.href='changeInfor.php'" class="user-btn" value="Cập Nhật Thông Tin">
+            <input type="button" onclick="location.href='changePassword.php'" class="user-btn" value="Thay Đổi Mật Khẩu">
+            <input type="button" onclick="location.href='block.php'" class="user-btn" value="Khóa Tài Khoản">
+            <input type="button" onclick="location.href='confirmDelete.php'" onclick="return confirm('Bạn có thực sự muốn xóa tài khoản?')" class="user-btn" value="Xóa Tài Khoản">
+            <input type="button" onclick="location.href='logout.php'" onclick="return confirm('Bạn muốn đăng xuất ?')" class="user-btn" value="Đăng Xuất">
+        </div>
+    </div>
+</div>
 
 </html>

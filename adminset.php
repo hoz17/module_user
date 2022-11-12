@@ -54,10 +54,10 @@ if ($row['Status'] == 1)
                 $result = mysqli_query($conn, $sql);
                 $count = mysqli_num_rows($result);
                 if ($count <= 0) {
-                    echo "Khong tim thay ket qua phu hop";
-                    echo "<a href='index.php';>Home</a>";
+                    echo "Không tìm thấy kết quả phù hợp ";
+                    echo " <a href='adminset.php';> Quay lại</a>";
                 } else {
-                    echo "Tim thay " . $count . " ket qua  ";
+                    echo "Tìm thấy " . $count . " kết quả : ";
             ?>
                     <table>
                         <tbody>
@@ -112,7 +112,7 @@ if ($row['Status'] == 1)
                             <?php } ?>
                         </tbody>
                     </table>
-            <?php echo "<a href='adminset.php';>Home</a>";
+            <?php echo "<a href='adminset.php';>Refesh  </a>";
                 }
             } else require "content.php"; ?>
         </div>
