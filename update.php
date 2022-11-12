@@ -11,6 +11,10 @@ session_start();
         $ID = $_GET["ID"];
     }
 
+    $sql4 = "SELECT Status FROM user WHERE ID = " . $_SESSION['online'];
+    $result4 = mysqli_query($conn, $sql4);
+    $rows4 = mysqli_fetch_assoc($result4);
+
     $sql = "SELECT * FROM user WHERE ID = '$ID'";
     $result = mysqli_query($conn, $sql);
     $rows = mysqli_fetch_assoc($result);
@@ -52,13 +56,14 @@ session_start();
                 }
             }
         </script>
-        <p class="minititle">Username</p><input type="text" name="Username" value="<?php echo $rows['Username']; ?>" <?php if ($rows['Status'] != 3) echo 'readonly'; ?> /><br /><br />
-        <p class="minititle" <?php if ($rows['Status'] != 3) echo 'hidden'; ?>>Password</p><input type="password" id="myInput" name="Password" <?php if ($rows['Status'] != 3) echo 'hidden'; ?> value="<?php echo $rows['Password']; ?>" required /><input <?php if ($rows['Status'] != 3) echo 'hidden'; ?> type="checkbox" onclick="showPwd()" name="" id="">
-        <div <?php if ($rows['Status'] != 3) echo 'hidden'; ?>>Hiện mật khẩu</div>
-        <?php if ($rows['Status'] != 1) echo '<br><br>'; ?>
-        <p class="minititle">Email</p><input type="text" name="Email" value="<?php echo $rows['Email']; ?>" required <?php if ($rows['Status'] != 3) echo 'readonly'; ?> /><br /><br />
-        <p class="minititle" <?php if ($rows['Status'] == 1) echo 'hidden'; ?>>Trạng thái</p>
-        <select name="cboStatus" id="cboStatus" <?php if ($rows['Status'] == 1) echo 'hidden'; ?>>
+        <p class="minititle">Username</p><input type="text" name="Username" value="<?php echo $rows['Username']; ?>" <?php if ($rows4['Status'] != 3) echo 'readonly'; ?> /><br /><br />
+        <p class="minititle" <?php if ($rows4['Status'] != 3) echo 'hidden'; ?>>Password</p><input type="password" id="myInput" name="Password" <?php if ($rows4['Status'] != 3) echo 'hidden'; ?> value="<?php echo $rows['Password']; ?>" required />
+        <input <?php if ($rows4['Status'] != 3) echo 'hidden'; ?> type="checkbox" onclick="showPwd()" name="" id="">
+        <div <?php if ($rows4['Status'] != 3) echo 'hidden'; ?>>Hiện mật khẩu</div>
+        <?php if ($rows4['Status'] != 1) echo '<br><br>'; ?>
+        <p class="minititle">Email</p><input type="text" name="Email" value="<?php echo $rows['Email']; ?>" required <?php if ($rows4['Status'] != 3) echo 'readonly'; ?> /><br /><br />
+        <p class="minititle" <?php if ($rows4['Status'] == 1) echo 'hidden'; ?>>Trạng thái</p>
+        <select name="cboStatus" id="cboStatus" <?php if ($rows4['Status'] == 1) echo 'hidden'; ?>>
             <option value="0" <?php if ($rows['Status'] == 0) echo "selected"; ?>>Chưa kích hoạt</option>
             <option value="1" <?php if ($rows['Status'] == 1) echo "selected"; ?>>User</option>
             <option value="2" <?php if ($rows['Status'] == 2) echo "selected"; ?>>Blocked</option>
@@ -97,7 +102,7 @@ session_start();
             <a class="green" href="
                 <?php
                 if (!isset($_SESSION["online"])) $_SESSION['online'] = $ID;
-                if ($rows['Status'] == 3) echo "adminset.php";
+                if ($rows4['Status'] == 3) echo "adminset.php";
                 else echo "userset.php";
                 ?>">Quay Lại
             </a>
