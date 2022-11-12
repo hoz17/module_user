@@ -36,7 +36,7 @@ session_start();
                 $Password = $_POST["Password"];
                 $Email = $_POST["Email"];
 
-                if ($rows['Status'] == 3) {
+                if ($rows4['Status'] == 3) {
                     $sql = "UPDATE user SET Fullname='$Fullname',Birthday='$Birthday',Gender = '$Gender', Address='$Address', Class_id='$Class' , Username='$Username', Password='$Password', Status='$Status'WHERE id=" . $ID;
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
@@ -45,7 +45,7 @@ session_start();
                     } else {
                         echo "Failed";
                     }
-                } elseif ($rows['Status'] == 1) {
+                } elseif ($rows4['Status'] == 1) {
                     header("location:confirmInfor.php?ID=" . $ID . "&Fullname=" . $Fullname . "&Birthday=" . $Birthday . "&Gender=" . $Gender . "&Address=" . $Address . "&Class=" . $Class);
                 }
             }
