@@ -11,13 +11,14 @@ $ID = $_SESSION['online'];
 $sql = "SELECT Password FROM user WHERE ID=" . $ID;
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
-
-$oldPwd = $_POST['oldPwd'];
-$newPwd = $_POST['newPwd'];
-$confirmPwd = $_POST['confirmPwd'];
 if (isset($_POST("pwd"))) {
     if ($oldPwd = $row['Password']) {
     }
+    $oldPwd = $_POST['oldPwd'];
+    $newPwd = $_POST['newPwd'];
+    $confirmPwd = $_POST['confirmPwd'];
 }
+
+
 
 ?>
