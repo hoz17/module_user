@@ -32,7 +32,6 @@ body {
 }
 .container {
   display: flex;
-  height: 400px;
   margin: 0 auto;
   width: 640px;
 }

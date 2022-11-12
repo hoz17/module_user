@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./CSS/login.css">
 <?php
 require "connect.php";
 session_start();
@@ -42,7 +43,6 @@ if ($_SESSION['online'] != '') {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./CSS/login.css">
 </head>
 
 <body>

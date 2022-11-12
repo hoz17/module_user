@@ -100,6 +100,7 @@ label {
 }
 input {
   background: transparent;
+  border: 0px;
   color: #f2f2f2;
   font-size: 20px;
   height: 30px;
@@ -107,12 +108,12 @@ input {
   outline: none !important;
   width: 100%;
 }
-/* input::-moz-focus-inner {
-  border: 0;
-} */
+input::-moz-focus-inner {
+  border: 0px;
+}
 #submit {
   color: #707075;
-  margin-top: 40px;
+  margin-top: 30px;
   transition: color 300ms;
 }
 #submit:focus {

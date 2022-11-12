@@ -15,15 +15,20 @@ session_start();
             //error_reporting(E_ERROR | E_PARSE);
             if (isset($_GET["ID"])) {
                 $ID = $_GET["ID"];
+                $sql = "SELECT * FROM user WHERE ID = '$ID'";
+                $result = mysqli_query($conn, $sql);
+                $rows = mysqli_fetch_assoc($result);
+            } else {
+                $sql = "SELECT * FROM user WHERE ID = " . $_SESSION['online'];
+                $result = mysqli_query($conn, $sql);
+                $rows = mysqli_fetch_assoc($result);
             }
 
             $sql4 = "SELECT * FROM user WHERE ID = " . $_SESSION['online'];
             $result4 = mysqli_query($conn, $sql4);
             $rows4 = mysqli_fetch_assoc($result4);
 
-            $sql = "SELECT * FROM user WHERE ID = '$ID'";
-            $result = mysqli_query($conn, $sql);
-            $rows = mysqli_fetch_assoc($result);
+
 
             if (isset($_POST['update'])) {
                 $Fullname = $_POST["Fullname"];
@@ -64,13 +69,12 @@ session_start();
                 </script>
                 <label class="minititle">Username</label>
                 <input type="text" name="Username" value="<?php echo $rows['Username']; ?>" <?php if ($rows4['Status'] != 3) echo 'readonly'; ?> /><br /><br />
-                <label class="minititle" <?php if ($rows4['Status'] != 3) echo 'hidden'; ?>>Password</label>
+                <label class="minititle" <?php if ($rows4['Status'] != 3) echo 'style="display:none ;"'; ?>>Password</label>
                 <input type="password" id="myInput" name="Password" <?php if ($rows4['Status'] != 3) echo 'hidden'; ?> value="<?php echo $rows['Password']; ?>" required />
                 <i <?php if ($rows4['Status'] != 3) echo 'hidden'; ?> onclick="showPwd()" class="ti-eye"></i>
-                <!-- <p <?php if ($rows4['Status'] != 3) echo 'hidden'; ?>>Hiện mật khẩu</p> -->
                 <?php if ($rows4['Status'] != 1) echo '<br><br>'; ?>
                 <label class="minititle">Email</label><input type="text" name="Email" value="<?php echo $rows['Email']; ?>" required <?php if ($rows4['Status'] != 3) echo 'readonly'; ?> /><br /><br />
-                <label class="minititle" <?php if ($rows4['Status'] == 1) echo 'hidden'; ?>>Trạng thái</label>
+                <label class="minititle" <?php if ($rows4['Status'] == 1) echo 'style="display:none ;"'; ?>>Trạng thái</label>
                 <select name="cboStatus" id="cboStatus" <?php if ($rows4['Status'] == 1) echo 'hidden'; ?>>
                     <option value="0" <?php if ($rows['Status'] == 0) echo "selected"; ?>>Chưa kích hoạt</option>
                     <option value="1" <?php if ($rows['Status'] == 1) echo "selected"; ?>>User</option>

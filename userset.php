@@ -35,7 +35,7 @@ if ($row['Status'] == 3)
             <div class="eula">User Function Here !!!</div>
         </div>
         <div class="right">
-            <input type="button" onclick="location.href='changeInfor.php'" class="user-btn" value="Cập Nhật Thông Tin">
+            <input type="button" onclick="location.href='update.php'" class="user-btn" value="Cập Nhật Thông Tin">
             <input type="button" onclick="location.href='changePassword.php'" class="user-btn" value="Thay Đổi Mật Khẩu">
             <input type="button" onclick="location.href='block.php'" class="user-btn" value="Khóa Tài Khoản">
             <input type="button" onclick="location.href='confirmDelete.php'" class="user-btn" value="Xóa Tài Khoản">
