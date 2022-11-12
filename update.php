@@ -106,12 +106,12 @@ session_start();
                     ?>
                 </select><br><br>
                 <input class="button" type="submit" id="submit" name="update" value="Sửa">
-                <!-- <button class="button">
+                <!--  <button class="button">
                     <a class="green" href="
                 <?php
-                if (!isset($_SESSION["online"])) $_SESSION['online'] = $ID;
-                if ($rows4['Status'] == 3) echo "adminset.php";
-                else echo "userset.php";
+                //if (!isset($_SESSION["online"])) $_SESSION['online'] = $ID;
+                //if ($rows4['Status'] == 3) echo "adminset.php";
+                //else echo "userset.php";
                 ?>">Quay Lại
                     </a>
                 </button> -->
