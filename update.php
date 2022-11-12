@@ -3,10 +3,12 @@ require "connect.php";
 session_start();
 ?>
 <link rel="stylesheet" href="./CSS/update.css">
+<link rel="stylesheet" href="./CSS/themify-icons/themify-icons.css">
+
 <div class="page">
     <div class="container">
         <div class="left">
-            <H1>Sửa Dữ Liệu</H1>
+            <H1>Update <br> Information</H1>
         </div>
         <div class="right">
             <?php
@@ -60,13 +62,15 @@ session_start();
                         }
                     }
                 </script>
-                <p class="minititle">Username</p><input type="text" name="Username" value="<?php echo $rows['Username']; ?>" <?php if ($rows4['Status'] != 3) echo 'readonly'; ?> /><br /><br />
-                <p class="minititle" <?php if ($rows4['Status'] != 3) echo 'hidden'; ?>>Password</p><input type="password" id="myInput" name="Password" <?php if ($rows4['Status'] != 3) echo 'hidden'; ?> value="<?php echo $rows['Password']; ?>" required />
-                <input <?php if ($rows4['Status'] != 3) echo 'hidden'; ?> type="checkbox" onclick="showPwd()" name="" id="">
-                <div <?php if ($rows4['Status'] != 3) echo 'hidden'; ?>>Hiện mật khẩu</div>
+                <label class="minititle">Username</label>
+                <input type="text" name="Username" value="<?php echo $rows['Username']; ?>" <?php if ($rows4['Status'] != 3) echo 'readonly'; ?> /><br /><br />
+                <label class="minititle" <?php if ($rows4['Status'] != 3) echo 'hidden'; ?>>Password</label>
+                <input type="password" id="myInput" name="Password" <?php if ($rows4['Status'] != 3) echo 'hidden'; ?> value="<?php echo $rows['Password']; ?>" required />
+                <i <?php if ($rows4['Status'] != 3) echo 'hidden'; ?> onclick="showPwd()" class="ti-eye"></i>
+                <!-- <p <?php if ($rows4['Status'] != 3) echo 'hidden'; ?>>Hiện mật khẩu</p> -->
                 <?php if ($rows4['Status'] != 1) echo '<br><br>'; ?>
-                <p class="minititle">Email</p><input type="text" name="Email" value="<?php echo $rows['Email']; ?>" required <?php if ($rows4['Status'] != 3) echo 'readonly'; ?> /><br /><br />
-                <p class="minititle" <?php if ($rows4['Status'] == 1) echo 'hidden'; ?>>Trạng thái</p>
+                <label class="minititle">Email</label><input type="text" name="Email" value="<?php echo $rows['Email']; ?>" required <?php if ($rows4['Status'] != 3) echo 'readonly'; ?> /><br /><br />
+                <label class="minititle" <?php if ($rows4['Status'] == 1) echo 'hidden'; ?>>Trạng thái</label>
                 <select name="cboStatus" id="cboStatus" <?php if ($rows4['Status'] == 1) echo 'hidden'; ?>>
                     <option value="0" <?php if ($rows['Status'] == 0) echo "selected"; ?>>Chưa kích hoạt</option>
                     <option value="1" <?php if ($rows['Status'] == 1) echo "selected"; ?>>User</option>
@@ -74,14 +78,14 @@ session_start();
                     <option value="3" <?php if ($rows['Status'] == 3) echo "selected"; ?>>Admin</option>
                 </select>
                 <?php if ($rows4['Status'] != 1) echo '<br><br>'; ?>
-                <p class="minititle">Họ tên</p><input type="text" name="Fullname" value="<?php echo $rows['Fullname']; ?>" required /><br /><br />
-                <p class="minititle">Ngày Sinh</p><input type="date" name="Birthday" value="<?php echo $rows['Birthday']; ?>" required /><br /><br />
-                <p class="minititle">Giới Tính</p>
+                <label class="minititle">Họ tên</label><input type="text" name="Fullname" value="<?php echo $rows['Fullname']; ?>" required /><br /><br />
+                <label class="minititle">Ngày Sinh</label><input type="date" name="Birthday" value="<?php echo $rows['Birthday']; ?>" required /><br /><br />
+                <label class="minititle">Giới Tính</label>
                 <input class="radio" type="radio" name="Gender" value="0" <?php if ($rows["Gender"] == 0) echo "checked"; ?> /> Nam <br /><br />
                 <input class="radio" type="radio" name="Gender" value="1" <?php if ($rows["Gender"] == 1) echo "checked"; ?> /> Nữ<br /><br />
-                <p class="minititle">Địa Chỉ</p>
+                <label class="minititle">Địa Chỉ</label>
                 <input type="text" name="Address" value="<?php echo $rows['Address']; ?>" required /><br /><br />
-                <p class="minititle">Nhóm</p>
+                <label class="minititle">Nhóm</label>
                 <select name="cboClass" id="cboClass">
                     <?php
                     $conn = mysqli_connect("localhost", "root", "", "module_user");
@@ -102,7 +106,7 @@ session_start();
                     ?>
                 </select><br><br>
                 <input class="button" type="submit" id="submit" name="update" value="Sửa">
-                <button class="button">
+                <!-- <button class="button">
                     <a class="green" href="
                 <?php
                 if (!isset($_SESSION["online"])) $_SESSION['online'] = $ID;
@@ -110,7 +114,8 @@ session_start();
                 else echo "userset.php";
                 ?>">Quay Lại
                     </a>
-                </button>
+                </button> -->
+                <input type="button" onclick="location.href='adminset.php'" id="back-btn" name="back" value="Quay Lại">
             </form>
 
         </div>

@@ -46,12 +46,11 @@ h1 {
   }
 }
 .left {
-  background: white;
+  background: #e2e2e5;
   height: calc(100% - 40px);
   top: 20px;
   position: relative;
   width: 70%;
-  margin: auto;
 }
 @media (max-width: 900px) {
   .left {
@@ -84,7 +83,7 @@ h1 {
 label {
   color: #c2c2c5;
   display: block;
-  font-size: 14px;
+  font-size: 18px;
   height: 16px;
   margin-top: 20px;
   margin-bottom: 5px;
@@ -92,13 +91,16 @@ label {
 }
 input {
   background: transparent;
-  border: 0;
+  border-bottom: 1px solid #f1f1f2;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
   color: #f2f2f2;
   font-size: 20px;
   height: 30px;
   line-height: 30px;
   outline: none !important;
-  width: 70%;
+  width: 80%;
   margin-left: 20px;
 }
 input::-moz-focus-inner {
@@ -114,4 +116,34 @@ input::-moz-focus-inner {
 }
 #submit:active {
   color: #d0d0d2;
+}
+select {
+  width: 40%;
+  margin-left: 20px;
+  margin-top: 4px;
+  padding: 5px;
+  font-size: 14px;
+}
+.radio {
+  margin-left: 20px;
+  width: 18px;
+  height: 18px;
+}
+#back-btn {
+  font-size: 16px;
+  color: #707075;
+  margin-top: 10px;
+  transition: color 300ms;
+}
+#back-btn:focus {
+  color: #f2f2f2;
+}
+#back-btn:active {
+  color: #d0d0d2;
+}
+#show {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin: 0;
 }
