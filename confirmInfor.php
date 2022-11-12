@@ -11,6 +11,7 @@ if (isset($_GET["Class"])) $Class = $_GET["Class"];
 $sql = "SELECT * FROM user WHERE ID ='$ID'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
+$name = $row['Username'];
 
 $sql2 = "SELECT * FROM class";
 $result2 = mysqli_query($conn, $sql2);
@@ -20,7 +21,7 @@ while ($row2 = mysqli_fetch_array($result2)) {
 }
 
 if ($Gender == 0) $GT2 = "Nam";
-else $GT = "Nữ";
+else $GT2 = "Nữ";
 if ($row['Gender'] == 0) $GT1 = "Nam";
 else $GT1 = "Nữ";
 
@@ -56,6 +57,7 @@ $bodyContent = '<table border="1"  align="center"><tbody>
 <tr>
 <td>
 <p align="center">Xác nhận thay đổi thông tin tài khoản của bạn: </p>
+<p align="center">Xin chào ' . $name . ' </p>
 <table align="center">
 <tbody>
 <tr>
@@ -100,5 +102,5 @@ $mail->Body    = $bodyContent;
 if (!$mail->send()) {
     echo '<div  align="center">Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '</div>';
 } else {
-    echo '<div align="center">Thư xác nhận đã được gửi đến địa chỉ mail của bạn.<br>Vui lòng bấm vào liên kết để kích hoạt tài khoản.</div>';
+    echo '<div align="center">Thư xác nhận đã được gửi đến địa chỉ mail của bạn.<br>Vui lòng bấm vào liên kết để xác nhận thay đổi.</div>';
 }
