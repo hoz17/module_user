@@ -1,9 +1,7 @@
 <?php
 require "connect.php";
 session_start();
-$_SESSION['online'];
-?>
-<?php
+error_reporting(E_ERROR | E_PARSE);
 if ($_SESSION['online'] != '') {
   $sql = "SELECT Status FROM user WHERE ID=" . $_SESSION['online'];
   $result = mysqli_query($conn, $sql);
