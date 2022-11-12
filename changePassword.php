@@ -19,4 +19,5 @@ if (isset($_POST("pwd"))) {
     if ($oldPwd = $row['Password']) {
     }
 }
+
 ?>
