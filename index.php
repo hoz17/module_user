@@ -8,13 +8,17 @@ require "connect.php"
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
+    <link rel="stylesheet" href="./CSS/index.css">
 </head>
 
 <body>
-    <div id="index">
-        Đây là trang index
+    <div class="page">
+        <div class="index">
+            Module Quản Lý Người Dùng
+        </div>
+        <a href="login.php">Đăng nhập/Đăng Ký</a>
+        <div class="clear"></div>
     </div>
-    <a href="login.php">Đăng nhập</a>
 </body>
 
 </html>
