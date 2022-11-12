@@ -19,6 +19,7 @@ session_start();
                 $result = mysqli_query($conn, $sql);
                 $rows = mysqli_fetch_assoc($result);
             } else {
+                $ID = $_SESSION['online'];
                 $sql = "SELECT * FROM user WHERE ID = " . $_SESSION['online'];
                 $result = mysqli_query($conn, $sql);
                 $rows = mysqli_fetch_assoc($result);
@@ -42,7 +43,7 @@ session_start();
                 $Email = $_POST["Email"];
 
                 if ($rows4['Status'] == 3) {
-                    $sql = "UPDATE user SET Fullname='$Fullname',Birthday='$Birthday',Gender = '$Gender', Address='$Address', Class_id='$Class' , Username='$Username', Password='$Password', Status='$Status'WHERE id=" . $ID;
+                    $sql = "UPDATE user SET Fullname='$Fullname',Email='$Email',Birthday='$Birthday',Gender = '$Gender', Address='$Address', Class_id='$Class' , Username='$Username', Password='$Password', Status='$Status'WHERE id=" . $ID;
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                         header("location:adminset.php");
