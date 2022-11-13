@@ -47,6 +47,7 @@
             <td><?php echo $row["Class_name"]; ?></td>
             <td><a href="update.php?ID=<?php echo $row['ID']; ?>">Sửa</a> |<a href="delete.php?ID=<?php echo $row['ID']; ?>" onclick="return confirm('Are you sure you want to delete?')">Xóa</td>
         </tr>
+        <a href="Ex.php">import</a>
     <?php
     }
     ?>
