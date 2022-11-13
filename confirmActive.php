@@ -49,5 +49,5 @@ if (!$mail->send()) {
     echo '<div  align="center">Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '</div>';
 } else {
     echo '<div align="center">Thư xác nhận đã được gửi đến địa chỉ mail của bạn.<br>Vui lòng bấm vào liên kết để kích hoạt tài khoản.</div>';
-    echo "<a href='login.php';> Quay lại  </a>";
+    echo "<    <div align='center'><a href='login.php';> Quay lại  </a></div>    ";
 }
