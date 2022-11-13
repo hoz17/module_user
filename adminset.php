@@ -6,15 +6,6 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 if ($row['Status'] == 1)
     header("location:userset.php");
-
-if (isset($_POST['multipleDelete'])) {
-    if (!empty($_POST['check_list']))
-        foreach ($_POST['check_list'] as $check) {
-            $sqlDelete = "DELETE FROM user WHERE ID=" . $check;
-            $resultDelete = mysqli_query($conn, $sqlDelete);
-        }
-}
-
 ?>
 <link rel="stylesheet" href="./CSS/adminset.css">
 <!DOCTYPE html>
@@ -53,8 +44,6 @@ if (isset($_POST['multipleDelete'])) {
                     ?>
                 </select>
                 <input type="submit" value="Tìm kiếm" name="search">
-                <input type="submit" value="Xóa nhiều" name="multipleDelete">
-                <input type="submit" value="Khóa nhiều" name="multipleBlock">
             </form>
             <?php
             if (isset($_POST["search"])) {
@@ -92,7 +81,6 @@ if (isset($_POST['multipleDelete'])) {
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
-                                    <td> <input type="checkbox" name="check_list[]" id="" value="<?php echo $row['ID']; ?>"></td>
                                     <td><?php echo $row["ID"]; ?></td>
                                     <td><?php echo $row["Username"]; ?></td>
                                     <td><?php echo $row["Password"]; ?></td>
