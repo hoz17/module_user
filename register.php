@@ -1,8 +1,6 @@
 <?php
 require "connect.php";
 session_start();
-?>
-<?php
 if (isset($_POST["register"])) {
     $Username = $_POST["username"];
     $Email = $_POST["email"];
