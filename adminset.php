@@ -26,6 +26,7 @@ if ($row['Status'] == 1)
             <form action="" method="POST">
                 <input type="text" name="searchbar" placeholder="Username....">
                 <select name="cboClass" id="cboClass">
+
                     <?php
                     $conn = mysqli_connect("localhost", "root", "", "module_user");
                     if (!$conn) {
@@ -43,7 +44,8 @@ if ($row['Status'] == 1)
                     }
                     ?>
                 </select>
-                <input type="submit" value="Tìm kiếm" name="search">
+                <input type="submit" value="Tìm kiếm" name="search"><br>
+                <a href="Ex.php">import</a>
             </form>
             <?php
             if (isset($_POST["search"])) {
