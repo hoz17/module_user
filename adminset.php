@@ -64,7 +64,6 @@ if ($row['Status'] == 1)
                     <table>
                         <tbody>
                             <tr>
-                                <th></th>
                                 <th>ID</td>
                                 <th>Username</td>
                                 <th>Password</td>
