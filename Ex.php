@@ -30,7 +30,6 @@ require 'connect.php';
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="#">Import Excel To Mysql Database Using PHP</a>
 			</div>
 		</div>
 	</div>
@@ -53,6 +52,8 @@ require 'connect.php';
 							<div class="control-group">
 								<div class="controls">
 									<button type="submit" id="submit" name="Import" class="btn btn-primary button-loading" data-loading-text="Loading...">Upload</button>
+									&ensp;
+									<input type="button" onclick="location.href='adminset.php'" id="submit" name="submit" value="Quay Lại">
 								</div>
 							</div>
 						</fieldset>

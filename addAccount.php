@@ -1,28 +1,64 @@
 <?php
-session_start();
-$ID = $_SESSION['online'];
 require "connect.php";
+session_start();
+if (isset($_POST["register"])) {
+    $Username = $_POST["username"];
+    $Email = $_POST["email"];
+    $pass = $_POST["password1"];
 
-if (isset($_POST['insert'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $email = $_POST['email'];
-
-    $sql = "INSERT INTO user VALUES ('',' $username ',' $password ','$email ','','','','','',1)";
+    $sql = "SELECT * FROM user WHERE Username = '$Username' OR Email='$Email' ";
     $result = mysqli_query($conn, $sql);
-    if ($result) {
-        echo "alkjsdhakusdh";
+    $row = mysqli_fetch_array($result);
+    $count = mysqli_num_rows($result);
+    if ($count != 0) {
+        echo '<script>alert("Tên tài khoản hoặc email đã được đăng ký")</script>';
+    } else {
+        $sql2 = "INSERT INTO user VALUES ('','$Username','$pass','$Email','','','','','',1)";
+        $result2 = mysqli_query($conn, $sql2);
+
+        $sql3 = "SELECT ID FROM user WHERE Email='$Email' ";
+        $result3 = mysqli_query($conn, $sql3);
+        $row3 = mysqli_fetch_array($result3);
+        $ID = $row3['ID'];
+        header('location:confirmActive.php?ID=' . $ID);
     }
 }
-
 ?>
-<form action="" method="POST">
-    <input type="text" name="username">
-    <input type="text" name="password">
-    <input type="text" name="email">
-    <input type="submit" value="Thêm" name="insert">
 
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/register.css">
+</head>
 
+<body>
+    <div class="page">
+        <div class="container">
+            <div class="left">
+                <div class="register">Create Account By Admin</div>
+                <div class="eula"></div>
+            </div>
+            <div class="right">
+                <div class="form">
+                    <form action="" method="POST">
+                        <label for="username">Tên Tài Khoản</label>
+                        <input type="text" id="username" name="username" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="password1">Mật Khẩu</label>
+                        <input type="password" name="password1" id="password1" required>
+                        <br><input type="submit" id="register-btn" name="register" value="Thêm">
+                        <input type="button" onclick="location.href='adminset.php'" id="submit" name="submit" value="Quay Lại">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
-</form>
+</html>

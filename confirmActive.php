@@ -1,40 +1,58 @@
-<?php
-if (isset($_GET["ID"]))
-    $ID = $_GET["ID"];
-require 'connect.php';
-$sql = "SELECT Email FROM user WHERE ID ='$ID'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_array($result);
+<!DOCTYPE html>
+<html lang="en">
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/confirm.css">
+</head>
 
-require 'PHPMailer/Exception.php';
-require 'PHPMailer/PHPMailer.php';
-require 'PHPMailer/SMTP.php';
+<body>
 
-$mail = new PHPMailer;
+</body>
 
-//$mail->SMTPDebug = SMTP::DEBUG_SERVER;
-$mail->isSMTP();
-$mail->Host = 'smtp.gmail.com';
-$mail->SMTPAuth = true;
-$mail->Username = 'sn9920021@gmail.com';
-$mail->Password = 'gycxywxgpyvtcyal';
-$mail->SMTPSecure = 'tls';
-$mail->Port = 587;
+</html>
+<div class="page">
+    <div class="container">
+        <?php
+        if (isset($_GET["ID"]))
+            $ID = $_GET["ID"];
+        require 'connect.php';
+        $sql = "SELECT Email FROM user WHERE ID ='$ID'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
 
-$mail->setFrom('sn9920021@gmail.com', 'Managing Software');
-$mail->addReplyTo('sn9920021@gmail.com', 'Managing Software');
+        use PHPMailer\PHPMailer\PHPMailer;
+        use PHPMailer\PHPMailer\SMTP;
+        use PHPMailer\PHPMailer\Exception;
 
-$mail->addAddress($row['Email']);
+        require 'PHPMailer/Exception.php';
+        require 'PHPMailer/PHPMailer.php';
+        require 'PHPMailer/SMTP.php';
 
-$mail->isHTML(true);
+        $mail = new PHPMailer;
 
-$mail->Subject = 'Active account ';
+        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'sn9920021@gmail.com';
+        $mail->Password = 'gycxywxgpyvtcyal';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
 
-$bodyContent = '<table border="1"  align="center"><tbody>
+        $mail->setFrom('sn9920021@gmail.com', 'Managing Software');
+        $mail->addReplyTo('sn9920021@gmail.com', 'Managing Software');
+
+        $mail->addAddress($row['Email']);
+
+        $mail->isHTML(true);
+
+        $mail->Subject = 'Active account ';
+
+        $bodyContent = '<table border="1"  align="center"><tbody>
 <tr>
 <td>
 <p align="center">Xác nhận kích hoạt tài khoản của bạn: </p>
@@ -42,12 +60,14 @@ $bodyContent = '<table border="1"  align="center"><tbody>
 </td>
 </tr>
 </tbody></table>';
-$bodyContent .= '';
-$mail->Body    = $bodyContent;
-
-if (!$mail->send()) {
-    echo '<div  align="center">Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '</div>';
-} else {
-    echo '<div align="center">Thư xác nhận đã được gửi đến địa chỉ mail của bạn.<br>Vui lòng bấm vào liên kết để kích hoạt tài khoản.</div>';
-    echo "<    <div align='center'><a href='login.php';> Quay lại  </a></div>    ";
-}
+        $bodyContent .= '';
+        $mail->Body    = $bodyContent;
+        if (!$mail->send()) {
+            echo '<div  align="center">Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '</div>';
+        } else {
+            echo '<div align="center">Thư xác nhận đã được gửi đến địa chỉ mail của bạn.<br>Vui lòng bấm vào liên kết để kích hoạt tài khoản.';
+            echo "<   <br><br> <div align='center'><a href='login.php';>Quay lại </a></div>    ";
+        }
+        ?>
+    </div>
+</div>

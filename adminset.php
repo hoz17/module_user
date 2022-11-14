@@ -44,8 +44,9 @@ if ($row['Status'] == 1)
                     }
                     ?>
                 </select>
-                <input type="submit" value="Tìm kiếm" name="search"><br>
-                <a href="Ex.php">import</a>
+                <input type="submit" value="Tìm kiếm" name="search">
+                &ensp;
+                <input type="button" onclick="location.href='Ex.php'" id="submit" name="submit" value="Nhập Excel"><br>
             </form>
             <?php
             if (isset($_POST["search"])) {
