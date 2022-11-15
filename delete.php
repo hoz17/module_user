@@ -1,16 +1,3 @@
-<?php
-/* <script>
-var confirm = confirm("sample message?");
-if(confirm) {
-    // index page
-    window.location.url = ""; // your url index page
- } else {
-    // other page
-    window.location.url = ""; // your url other page
- }
-</script> */
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +15,6 @@ if(confirm) {
         $ID = $_GET["ID"];
         $sql = "DELETE FROM user WHERE  ID =' $ID'";
         $result = mysqli_query($conn, $sql);
-        $noti = "#";
         mysqli_close($conn);
         if ($result) {
             echo "<script>
