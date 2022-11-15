@@ -13,13 +13,13 @@ if ($_SESSION['online'] != '') {
 } elseif (isset($_POST['submit'])) {
   $tk = $_POST['username'];
   $mk = $_POST['password'];
-  $sql = "SELECT * FROM user WHERE Username = '$tk' AND Password = '$mk' ";
+  $sql = "SELECT * FROM user WHERE Username = '$tk' AND Password='$mk'";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result);
   $count = mysqli_num_rows($result);
   if ($count == 1) {
     if ($row['Status'] == 0) {
-      echo "Vui lòng kích hoạt tài khoản của bạn.";
+      echo "<script>alert('Vui lòng kích hoạt tài khoản của bạn.')</script>";
     } elseif ($row['Status'] == 2) {
       echo '<script>alert("Tài khoản của bạn hiện đang bị khóa. Vui lòng liên hệ admin để biết thêm chi tiết")</script>';
     } else {

@@ -1,6 +1,11 @@
 <?php
 require "connect.php";
 session_start();
+
+//$sessionSql="SELECT Status FROM user WHERE ID=".$_SESSION["online"];
+//$sessionResult=mysqli_query($conn,$sessionResult);
+//$sessionRow=mysqli_fetch_array($sessionResult);
+
 if (isset($_POST["register"])) {
     $Username = $_POST["username"];
     $Email = $_POST["email"];

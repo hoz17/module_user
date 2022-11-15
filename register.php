@@ -61,7 +61,7 @@ if (isset($_POST["register"])) {
                         <label for="password2">Nhập lại mật Khẩu</label>
                         <input type="password" name="password2" id="password2" required>
                         <br><input type="submit" id="register-btn" name="register" value="Đăng Ký">
-                        <input type="button" onclick="location.href='login.php'" id="submit" name="submit" value="Đăng Nhập">
+                        <input type="button" id="register-btn" onclick="location.href='login.php'" id="submit" name="submit" value="Đăng Nhập">
                     </form>
                 </div>
             </div>

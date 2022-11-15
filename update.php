@@ -111,16 +111,7 @@ session_start();
                     ?>
                 </select><br><br>
                 <input class="button" type="submit" id="submit" name="update" value="Sửa">
-                <!--  <button class="button">
-                    <a class="green" href="
-                <?php
-                //if (!isset($_SESSION["online"])) $_SESSION['online'] = $ID;
-                //if ($rows4['Status'] == 3) echo "adminset.php";
-                //else echo "userset.php";
-                ?>">Quay Lại
-                    </a>
-                </button> -->
-                <input type="button" onclick="location.href='adminset.php'" id="back-btn" name="back" value="Quay Lại">
+                <input type="button" id="submit" onclick="location.href='adminset.php'" id="back-btn" name="back" value="Quay Lại">
             </form>
         </div>
     </div>

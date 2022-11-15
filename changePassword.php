@@ -10,18 +10,23 @@ if (isset($_POST['change'])) {
     $oldPwd = $_POST['oldPwd'];
     $newPwd = $_POST['newPwd'];
     $confirmPwd = $_POST['confirmPwd'];
-    if ($oldPwd = $row['Password']) {
-        echo "Mật khẩu mới trùng mật khẩu cũ";
+    if ($oldPwd != $row['Password']) {
+        echo "<script>alert('Mật khẩu cũ không đúng !')</script>";
+    } elseif ($newPwd == $row['Password']) {
+        echo "<script>alert('Mật khẩu mới trùng mật khẩu cũ !')</script>";
     } elseif ($newPwd != $confirmPwd) {
-        echo "Xác nhận mật khẩu không khớp";
+        echo "<script>alert('Xác nhận mật khẩu không chính xác !')</script>'";
     } else {
-        $sql2 = "UPDATE user SET Password=" . $newPwd;
+        $sql2 = "UPDATE user SET Password='$newPwd' WHERE ID=" . $ID;
         $result2 = mysqli_query($conn, $sql2);
-        if ($result2) echo "Đổi mật khẩu thành công";
+        if ($result2) echo "<script>
+        var confirm = confirm('Đổi mật khẩu thành công');
+        if (confirm) {
+            window.location.href='userset.php';
+        }
+    </script>";
     }
 }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -43,15 +48,16 @@ if (isset($_POST['change'])) {
                 <div class="eula"></div>
             </div>
             <div class="right">
-                <div class="form" method="POST">
-                    <form action="">
+                <div class="form">
+                    <form action="" method="POST">
                         <label for="">Nhập mật khẩu cũ: </label>
                         <input type="Password" name="oldPwd" required><br>
                         <label for="">Nhập mật khẩu mới: </label>
                         <input type="password" name="newPwd" id="" required><br>
                         <label for="">Nhập lại mật khẩu: </label>
                         <input type="password" name="confirmPwd" id="" required><br>
-                        <input type="submit" value="Đổi mật khẩu" name="change">
+                        <input type="submit" value="Đổi mật khẩu" name="change"><br><br>
+                        <input type="submit" value="Quay lại" name="back" onclick="window.location='userset.php'">
                     </form>
                 </div>
             </div>
