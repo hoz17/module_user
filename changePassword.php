@@ -32,16 +32,31 @@ if (isset($_POST['change'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./CSS/register.css">
 </head>
 
 <body>
-    <form action="">
-        <label for="">Nhập mật khẩu cũ: </label><input type="Password" name="oldPwd"><br>
-        <label for="">Nhập mật khẩu mới: </label><input type="password" name="newPwd" id=""><br>
-        <label for="">Nhập lại mật khẩu: </label><input type="password" name="confirmPwd" id=""><br>
-        <input type="submit" value="Đổi mật khẩu" name="change">
-    </form>
-
+    <div class="page">
+        <div class="container">
+            <div class="left">
+                <div class="register">Change Password</div>
+                <div class="eula"></div>
+            </div>
+            <div class="right">
+                <div class="form" method="POST">
+                    <form action="">
+                        <label for="">Nhập mật khẩu cũ: </label>
+                        <input type="Password" name="oldPwd" required><br>
+                        <label for="">Nhập mật khẩu mới: </label>
+                        <input type="password" name="newPwd" id="" required><br>
+                        <label for="">Nhập lại mật khẩu: </label>
+                        <input type="password" name="confirmPwd" id="" required><br>
+                        <input type="submit" value="Đổi mật khẩu" name="change">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
