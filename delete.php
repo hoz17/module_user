@@ -1,3 +1,16 @@
+<?php
+/* <script>
+var confirm = confirm("sample message?");
+if(confirm) {
+    // index page
+    window.location.url = ""; // your url index page
+ } else {
+    // other page
+    window.location.url = ""; // your url other page
+ }
+</script> */
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,13 +28,18 @@
         $ID = $_GET["ID"];
         $sql = "DELETE FROM user WHERE  ID =' $ID'";
         $result = mysqli_query($conn, $sql);
+        $noti = "#";
         mysqli_close($conn);
-        if ($result)
-            echo "<div align='center'><h1>Xóa thành công</h1></div>";
+        if ($result) {
+            echo "<script>
+           var confirm = confirm('Xóa thành công');
+           if (confirm) {
+               window.location.href='adminset.php';
+           }
+       </script>";
+        }
     }
     ?>
-    <br>
-    <div align="center"><a href="login.php"><input type="submit" value="Trang chủ" name="return"></a></div>
 </body>
 
 </html>

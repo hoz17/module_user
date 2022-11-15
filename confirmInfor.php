@@ -51,7 +51,7 @@ $mail->addAddress($row['Email']);
 
 $mail->isHTML(true);
 
-$mail->Subject = 'Active account ';
+$mail->Subject = 'Change Information';
 
 $bodyContent = '<table border="1"  align="center"><tbody>
 <tr>
@@ -100,7 +100,18 @@ $bodyContent .= '';
 $mail->Body    = $bodyContent;
 
 if (!$mail->send()) {
-    echo '<div  align="center">Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '</div>';
+    echo "<script>
+var confirm = confirm('Gửi thư xác nhận không thành công. Mã lỗi:  $mail->ErrorInfo ');
+if (confirm) {
+      window.location.href='login.php';
+  }
+</script>";
+    //echo '<div  align="center">Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '</div>';
 } else {
-    echo '<div align="center">Thư xác nhận đã được gửi đến địa chỉ mail của bạn.<br>Vui lòng bấm vào liên kết để xác nhận thay đổi.</div>';
+    echo "<script>
+var confirm = confirm('Thư xác nhận đã được gửi đến địa chỉ mail của bạn.Vui lòng bấm vào liên kết để xác nhận thay đổi. ');
+if (confirm) {
+      window.location.href='login.php';
+  }
+</script>";
 }

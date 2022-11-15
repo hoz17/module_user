@@ -11,9 +11,17 @@ if (isset($_GET["Class"])) $Class = $_GET["Class"];
 $sql = "UPDATE user SET Fullname='$Fullname',Birthday='$Birthday',Gender = '$Gender', Address='$Address', Class_id='$Class'WHERE id=" . $ID;
 $result = mysqli_query($conn, $sql);
 if ($result) {
-    echo "<h1>Sửa thành công</h1>";
-    echo "<script type='text/javascript'>alert('Sửa thành công!')</script>";
-    echo "<a href='userset.php'><input type='button' value='Trang chủ'></a>";
+    echo "<script>
+var confirm = confirm('Đổi thông tin thành công. ');
+if (confirm) {
+      window.location.href='login.php';
+  }
+</script>";
 } else {
-    echo "Failed";
+    echo "<script>
+var confirm = confirm('Đổi thông tin không thành công. ');
+if (confirm) {
+      window.location.href='login.php';
+  }
+</script>";
 }

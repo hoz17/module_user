@@ -63,10 +63,22 @@
         $bodyContent .= '';
         $mail->Body    = $bodyContent;
         if (!$mail->send()) {
-            echo '<div  align="center">Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '</div>';
+            $deleteSql = "DELETE FROM user WHERE ID=" . $ID;
+            $deleteQuery = mysqli_query($conn, $deleteSql);
+            if ($deleteQuery)
+                echo "<script>
+                   var confirm = confirm('Gửi thư xác nhận không thành công. Mã lỗi:  $mail->ErrorInfo ');
+                   if (confirm) {
+                         window.location.href='login.php';
+                     }
+                   </script>";
         } else {
-            echo '<div align="center">Thư xác nhận đã được gửi đến địa chỉ mail của bạn.<br>Vui lòng bấm vào liên kết để kích hoạt tài khoản.';
-            echo "<   <br><br> <div align='center'><a href='login.php';>Quay lại </a></div>    ";
+            echo "<script>
+                   var confirm = confirm('Thư xác nhận đã được gửi đến địa chỉ mail của bạn.Vui lòng bấm vào liên kết để kích hoạt tài khoản. ');
+                   if (confirm) {
+                         window.location.href='login.php';
+                     }
+                   </script>";
         }
         ?>
     </div>

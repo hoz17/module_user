@@ -28,7 +28,7 @@ $mail->Port = 587;
 $mail->setFrom('sn9920021@gmail.com', 'Managing Software');
 $mail->addReplyTo('sn9920021@gmail.com', 'Managing Software');
 
-$mail->addAddress($row['Email'] );
+$mail->addAddress($row['Email']);
 
 $mail->isHTML(true);
 
@@ -47,7 +47,18 @@ $bodyContent .= '';
 $mail->Body    = $bodyContent;
 
 if (!$mail->send()) {
-    echo 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo;
+    echo "<script>
+    var confirm = confirm('Gửi thư xác nhận không thành công. Mã lỗi:  $mail->ErrorInfo ');
+    if (confirm) {
+          window.location.href='login.php';
+      }
+    </script>";
+    //echo '<div  align="center">Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '</div>';
 } else {
-    echo 'Message has been sent.';
+    echo "<script>
+    var confirm = confirm('Thư xác nhận đã được gửi đến địa chỉ mail của bạn.Vui lòng bấm vào liên kết để xác nhận xóa tài khoản. ');
+    if (confirm) {
+          window.location.href='login.php';
+      }
+    </script>";
 }
